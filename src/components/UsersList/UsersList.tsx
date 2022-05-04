@@ -145,11 +145,11 @@ export const UsersList: FC<Props> = ({ users, setUsers, setFavouritesUsers, setD
       {deletedItem && (
         <Dialog open={openModal} onClose={handleCloseModal} aria-labelledby="alert-modal-title">
           <DialogTitle id="alert-dialog-title" sx={{ minWidth: '350px' }}>
-            Delete user &quot;{deletedItem.login}&quot;?
+            Удалить пользователя &quot;{deletedItem.login}&quot;?
           </DialogTitle>
           <DialogActions sx={{ p: 2 }}>
             <Button onClick={handleCloseModal} color="error">
-              Cancel
+              Отмена
             </Button>
             <Button
               variant="contained"
@@ -157,7 +157,7 @@ export const UsersList: FC<Props> = ({ users, setUsers, setFavouritesUsers, setD
               startIcon={<DeleteIcon />}
               onClick={() => deleteItem(deletedItem)}
             >
-              Delete
+              Удалить
             </Button>
           </DialogActions>
         </Dialog>
@@ -165,7 +165,7 @@ export const UsersList: FC<Props> = ({ users, setUsers, setFavouritesUsers, setD
 
       <Snackbar autoHideDuration={1000} open={openAlert} onClose={handleCloseAlert}>
         <Alert onClose={handleCloseAlert} severity="success" sx={{ width: '100%' }}>
-          User was deleted!
+          Пользователь был удален!
         </Alert>
       </Snackbar>
     </>
