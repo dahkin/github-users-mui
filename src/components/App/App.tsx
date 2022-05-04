@@ -37,7 +37,6 @@ export const App: FC = () => {
       <CssBaseline />
       {baseGlobalStyles}
       <Header searchValue={searchValue} setSearchValue={setSearchValue} favouritesUsers={favouritesUsers} />
-
       <Switch>
         <Route path="/users/:login">
           <UserProfilePage setSearchValue={setSearchValue} />
