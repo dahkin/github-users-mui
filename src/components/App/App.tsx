@@ -6,6 +6,19 @@ import { UserProfilePage } from '../UserProfilePage/UserProfilePage';
 import { UsersSearchPage } from '../UsersSearchPage/UsersSearchPage';
 import { UsersFavouritesPage } from '../UsersFavouritesPage/UsersFavouritesPage';
 
+// MUI
+import GlobalStyles from '@mui/material/GlobalStyles';
+import CssBaseline from '@mui/material/CssBaseline';
+
+const baseGlobalStyles = (
+  <GlobalStyles
+    styles={{
+      body: { backgroundColor: '#fff' },
+      margin: 0,
+    }}
+  />
+);
+
 export const App: FC = () => {
   const [searchValue, setSearchValue] = useState('');
   const [favouritesUsers, setFavouritesUsers] = React.useState<string[]>([]);
@@ -21,6 +34,8 @@ export const App: FC = () => {
 
   return (
     <>
+      <CssBaseline />
+      {baseGlobalStyles}
       <Header searchValue={searchValue} setSearchValue={setSearchValue} favouritesUsers={favouritesUsers} />
 
       <Switch>

@@ -1,8 +1,0 @@
-*:not(svg *) {
-  all: unset;
-  display: revert;
-}
-
-a[href] {
-  cursor: pointer;
-}

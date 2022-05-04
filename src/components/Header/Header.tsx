@@ -15,6 +15,7 @@ import Container from '@mui/material/Container';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import SearchIcon from '@mui/icons-material/Search';
 import Stack from '@mui/material/Stack';
+import Link from '@mui/material/Link';
 
 interface MatchParams {
   login: string;
@@ -55,7 +56,9 @@ export const Header: FC<Props> = ({ searchValue, setSearchValue, favouritesUsers
         <Container maxWidth="lg">
           <AppToolbar>
             <Typography variant="h6" noWrap component="div" sx={{ mb: { xs: 1, sm: 0 } }}>
-              <NavLink to="/">Пользователи гитхаба</NavLink>
+              <Link underline="none" component={NavLink} to="/" sx={{ color: 'inherit' }}>
+                Пользователи гитхаба
+              </Link>
             </Typography>
             <Switch>
               <Route
@@ -63,14 +66,14 @@ export const Header: FC<Props> = ({ searchValue, setSearchValue, favouritesUsers
                 render={(props: RouteComponentProps<MatchParams>) => (
                   <Typography variant="h6" sx={{ ml: 1, display: { xs: 'none', md: 'block' } }}>
                     {'// '}
-                    <a className="header__navigation-link header__navigation-link--user">{props.match.params.login}</a>
+                    {props.match.params.login}
                   </Typography>
                 )}
               />
               <Route path="/search">
                 <Typography variant="h6" sx={{ ml: 1, display: { xs: 'none', md: 'block' } }}>
                   {'// '}
-                  <a className="header__navigation-link header__navigation-link--user">Поиск</a>
+                  Поиск
                 </Typography>
               </Route>
             </Switch>
