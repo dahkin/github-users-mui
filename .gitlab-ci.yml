@@ -4,19 +4,18 @@ stages:
   - deploy
 
 code_quality:
-  image: node:14.17.4
+  image: node:14.16.1
   stage: test
   before_script:
     - npm ci
   script:
     - npm run eslint
-    - npm run stylelint
     - npm run prettier-check
   only:
     - merge_requests
 
 build:
-  image: node:14.17.4
+  image: node:14.16.1
   stage: build
   before_script:
     - npm ci
@@ -30,6 +29,7 @@ build:
     - main
 
 pages:
+  image: node:14.16.1
   stage: deploy
   before_script:
     - npm install
