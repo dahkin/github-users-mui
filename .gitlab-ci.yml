@@ -28,16 +28,21 @@ build:
     - merge_requests
     - main
 
-pages:
-  image: node:14.16.1
+deploy:
+  image: alpine:latest
   stage: deploy
   before_script:
-    - npm install
+    - apk update && apk add rsync openssh
+    - mkdir ~/.ssh
+    - chmod 600 ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" >> ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+    - chmod 600 ~/.ssh/known_hosts
+  environment:
+    name: production
+  resource_group: production
   script:
-    - npm run build
-    - cp -r dist public
-  artifacts:
-    paths:
-      - public
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - rsync -a --delete dist/ $VPS_PATH
+  only:
+    - main
