@@ -31,12 +31,7 @@ export const UsersSearchPage: FC<Props> = ({ setFavouritesUsers, favouritesUsers
     setLoading(true);
 
     // Search users by query
-    fetch(`https://api.github.com/search/users?q=${query}`, {
-      headers: new Headers({
-        Accept: 'application/vnd.github.v3+json',
-        Authorization: 'token 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',
-      }),
-    })
+    fetch(`https://api.github.com/search/users?q=${query}`)
       .then((response) => response.json())
       .then((data) => {
         setUsers(data.items);

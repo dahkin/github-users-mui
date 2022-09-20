@@ -30,12 +30,7 @@ export const UsersPage: FC<Props> = ({
     setSearchValue('');
 
     // Get users list
-    fetch('https://api.github.com/users', {
-      headers: new Headers({
-        Accept: 'application/vnd.github.v3+json',
-        Authorization: 'token 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',
-      }),
-    })
+    fetch('https://api.github.com/users')
       .then((response) => response.json())
       .then((data) => {
         setUsers(data);

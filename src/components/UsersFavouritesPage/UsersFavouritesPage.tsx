@@ -26,14 +26,7 @@ export const UsersFavouritesPage: FC<Props> = ({
   const [loading, setLoading] = React.useState<boolean>(true);
 
   const userRequests = (users: string[]): Promise<UserAPI>[] =>
-    users.map((user) =>
-      fetch(`https://api.github.com/users/${user}`, {
-        headers: new Headers({
-          Accept: 'application/vnd.github.v3+json',
-          Authorization: 'token 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',
-        }),
-      }).then((res) => res.json())
-    );
+    users.map((user) => fetch(`https://api.github.com/users/${user}`).then((res) => res.json()));
 
   React.useEffect(() => {
     // Clean search field

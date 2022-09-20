@@ -2,14 +2,7 @@ import { UserAPI } from './types';
 import { Dispatch, SetStateAction } from 'react';
 
 export const userRequests = (users: UserAPI[]): Promise<UserAPI>[] =>
-  users.map((user) =>
-    fetch(`https://api.github.com/users/${user.login}`, {
-      headers: new Headers({
-        Accept: 'application/vnd.github.v3+json',
-        Authorization: 'token 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',
-      }),
-    }).then((res) => res.json())
-  );
+  users.map((user) => fetch(`https://api.github.com/users/${user.login}`).then((res) => res.json()));
 
 export const getFullUsersInfo = (
   users: UserAPI[],

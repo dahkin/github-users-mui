@@ -35,24 +35,14 @@ export const UserProfilePage: FC<Props> = ({ setSearchValue }) => {
     setLoadingRepos(true);
 
     // Fetch user info
-    fetch(`https://api.github.com/users/${login}`, {
-      headers: new Headers({
-        Accept: 'application/vnd.github.v3+json',
-        Authorization: 'token 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',
-      }),
-    })
+    fetch(`https://api.github.com/users/${login}`)
       .then((res) => res.json())
       .then((data) => {
         setUser(data);
       });
 
     // Fetch user repos info
-    fetch(`https://api.github.com/users/${login}/repos`, {
-      headers: new Headers({
-        Accept: 'application/vnd.github.v3+json',
-        Authorization: 'token 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',
-      }),
-    })
+    fetch(`https://api.github.com/users/${login}/repos`)
       .then((res) => res.json())
       .then((data) => {
         if (data.message || data.length === 0) {
